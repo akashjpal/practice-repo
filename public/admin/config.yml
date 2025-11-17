@@ -33,5 +33,5 @@ media_folder: "src/assets/images"      # Images saved to repo here
 public_folder: "src/assets/images"            # Images accessed at this URL
 backend:
   name: github  # or gitlab, bitbucket, etc.
-  repo: akashjpal/example-project  # Your GitHub repository
+  repo: akashjpal/practice-repo  # Your GitHub repository
   branch: main  # The branch to update (main or master)
