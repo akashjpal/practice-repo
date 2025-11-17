@@ -10,9 +10,28 @@ collections:
       - { label: "Featured Image", name: "thumbnail", widget: "image" }
       - { label: "Rating (scale of 1-5)", name: "rating", widget: "number" }
       - { label: "Body", name: "body", widget: "markdown" }
-media_folder: "src/assets/images" # Location where files will be stored in the repo
-public_folder: "src/assets/images" # The src attribute for uploaded media
+
+  - name: "post" # Used in routes, e.g., /admin/collections/blog
+    label: "Post" # Used in the UI
+    folder: "src/content/post" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    fields: # The fields for each document, usually in frontmatter
+
+    # explain this
+      - { label: "Layout", name: "layout", widget: "hidden", default: "post" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Featured Image", name: "thumbnail", widget: "image" }
+      - { label: "Rating (scale of 1-5)", name: "rating", widget: "number" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+
+
+
+
+media_folder: "src/assets/images"      # Images saved to repo here
+public_folder: "src/assets/images"            # Images accessed at this URL
 backend:
   name: github  # or gitlab, bitbucket, etc.
-  repo: your-username/your-repo-name  # Your GitHub repository
-  branch: main  # The branch to update (main or master)
+  repo: akashjpal/example-project  # Your GitHub repository
+  branch: master  # The branch to update (main or master)
