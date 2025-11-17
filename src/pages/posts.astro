@@ -1,0 +1,40 @@
+---
+import { getCollection } from "astro:content";
+
+interface Posts {
+    data: {
+        layout: string;
+        title: string;
+        date: Date;
+        rating: number;
+        thumbnail?: string;
+    }
+}
+
+// Fetch all blog posts from src/content/blog/
+const allBlogPosts: Posts[] = await getCollection('post');
+
+// Optional: Sort by date (newest first)
+const sortedPosts: Posts[] = allBlogPosts.sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+---
+
+<ul>
+  {
+    sortedPosts.map((post) => (
+      <li>
+        <a>
+          <h2>{post.data.title}</h2>
+        </a>
+        <time datetime={post.data.date.toISOString()}>
+          {post.data.date.toLocaleDateString()}
+        </time>
+        <p>Rating: {post.data.rating}/5</p>
+        {post.data.thumbnail && (
+          <img src={post.data.thumbnail} alt={post.data.title} />
+        )}
+      </li>
+    ))
+  }
+</ul>
